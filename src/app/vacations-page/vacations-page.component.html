@@ -1,0 +1,23 @@
+<h2>Possible Vacation destinations</h2>
+<ul >
+  <li *ngFor="let vacation of vacations">
+    <button type="button" 
+    (click)="onSelect(vacation)"
+    [class.selected]="vacation === selectedVacation"
+    style="margin-bottom: 20px;">
+      <div >
+        <span >Country: {{vacation.country}}</span>
+      </div>
+      <div>
+        <span >City: {{vacation.city}}</span>
+      </div>
+      <div>
+        <span >Weather: {{vacation.weather}}</span>
+      </div>
+      <div>
+        <span >${{vacation.cost}} dollars</span>
+      </div>
+    </button>
+  </li>
+</ul>
+

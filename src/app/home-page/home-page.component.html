@@ -1,0 +1,24 @@
+<h2>Welcome to the VacationHelper App</h2>
+
+<div>
+    
+    <label>
+        Please provide the budget for your vacation
+    </label>
+    
+    <input type="number"  [(ngModel)] = "price"/>
+    
+</div>
+<div>
+    
+    <label>
+        Please select the ideal temperature?
+    </label>
+    
+    <select name="cars" id="cars" [(ngModel)] = "temperature">
+        <option value="cold">0 -32 fahrenheit</option>
+        <option value="hot">33 - 100 fahrenheit </option>
+      </select>
+    
+</div>
+<button type="submit" (click)="onClick()"> Find Vacations</button>
