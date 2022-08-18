@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { VacationService } from "../vacation.service"; 
 
 @Component({
   selector: 'app-home-page',
@@ -9,16 +10,19 @@ import { RouterLink } from '@angular/router';
 export class HomePageComponent implements OnInit {
   price: number = 0; 
   temperature: string = "cold"; 
-  constructor() { }
+  constructor(private router: Router, private vacationService: VacationService) { }
 
   ngOnInit(): void {
   }
 
   onClick(){
-    localStorage.setItem("price", this.price.toString()); 
-    localStorage.setItem("temperature", this.temperature); 
+    // localStorage.setItem("price", this.price.toString()); 
+    // localStorage.setItem("temperature", this.temperature); 
 
-    window.location.href = "http://localhost:4200/vacations";
-    
+    this.vacationService.setInputs(this.price, this.temperature); 
+
+    // better routing in angular
+    this.router.navigate(["vacations"]);
+
   }
 }

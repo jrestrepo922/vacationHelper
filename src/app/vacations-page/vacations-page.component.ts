@@ -11,6 +11,7 @@ export class VacationsPageComponent implements OnInit {
 
   vacations: Vacation[] = []; 
   selectedVacation?: Vacation; 
+  status: boolean = false; 
 
   constructor(private vacationService: VacationService) { }
 
@@ -20,14 +21,11 @@ export class VacationsPageComponent implements OnInit {
 
   getVacations(): void {
     this.vacationService.getVacations()
-      .subscribe(vacations => this.vacations = vacations)
-      this.filterVacations(); 
-  }
+      .subscribe(vacations => {
+        this.status = true; 
+        this.vacations = vacations
+      })
 
-  filterVacations(): void {
-    let stringPrice: string | null = localStorage.getItem("price"); 
-    let temperature = localStorage.getItem("temperature")
-    // this.vacations = this.vacations.filter( vacation => vacation.weather ===  )
   }
 
   onSelect(vacation: Vacation):  void {
